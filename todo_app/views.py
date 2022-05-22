@@ -37,3 +37,17 @@ def task_incomplete(request, todo_id):
     todo.completed = False
     todo.save()
     return redirect('home')
+
+
+def edit(request, todo_id):
+    if request.method == 'POST':
+        todo = Todo.objects.get(id=todo_id)
+        form = TodoForm(request.POST or None, instance=todo)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, ('Task has been edited!'))
+            return redirect('home')
+    else:
+        todo = Todo.objects.get(id=todo_id)
+        return render(request, 'todo_app/edit.html', {'todo': todo})
