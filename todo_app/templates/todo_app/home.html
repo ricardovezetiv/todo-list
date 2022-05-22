@@ -33,9 +33,11 @@
                     </td>
                     <td>
                         {% if todo.completed == True %}
-                            <i class="far fa-check-circle"></i> {{ todo.completed }}
+                            <i class="far fa-check-circle"></i>
+                            <a href="{% url 'incomplete' todo.id %}">Mark Incomplete</a>
                         {% else %}
-                            <i class="far fa-circle"></i> {{ todo.completed }}
+                            <i class="far fa-circle"></i>
+                            <a href="{% url 'complete' todo.id %}">Mark Complete</a>
                         {% endif %}
                     </td>
                     <td>

@@ -17,8 +17,23 @@ def home(request):
         todos = Todo.objects.all()
         return render(request, 'todo_app/home.html', {'todos': todos})
 
+
 def delete(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.delete()
     messages.success(request, ('Task has been Deleted!'))
+    return redirect('home')
+
+
+def task_complete(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.completed = True
+    todo.save()
+    return redirect('home')
+
+
+def task_incomplete(request, todo_id):
+    todo = Todo.objects.get(id=todo_id)
+    todo.completed = False
+    todo.save()
     return redirect('home')
