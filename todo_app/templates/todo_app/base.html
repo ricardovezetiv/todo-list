@@ -1,26 +1,49 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django And Bulma!</title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 </head>
 <body>
 
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            <span style="font-size: 23px;">
+                <i class="fa-solid fa-bars-progress fa-lg"></i>
+                <strong> Todo List :</strong>
+
+            </span>
+        </a>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
     </div>
 
-    <div class="navbar-menu">
+    <div id="navMenu" class="navbar-menu">
         <div class="navbar-start">
+            <a class="navbar-item" href="{% url 'home' %}">
+                <span>
+                    <span style="color: Dodgerblue;">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </span> Home
+                </span>
+            </a>
             <a class="navbar-item">
-                Home
+                <span>
+                    <span style="color: Dodgerblue;">
+                        <i class="fa-solid fa-book"></i>
+                    </span> Documentation
+                </span>
             </a>
         </div>
 
@@ -41,6 +64,27 @@
         </div>
     </div>
 </nav>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+    });
+</script>
 
 {% block content %}
 
