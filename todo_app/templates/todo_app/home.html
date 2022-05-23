@@ -18,8 +18,9 @@
             <thead>
             <tr>
                 <th>Task</th>
-                <th>Completed</th>
-                <th>Delete</th>
+                <th align="center">Completed</th>
+                <th align="center">Edit</th>
+                <th align="center">Delete</th>
             </tr>
             </thead>
             {% for todo in todos %}
@@ -31,19 +32,34 @@
                             {{ todo.task }}
                         {% endif %}
                     </td>
-                    <td>
+                    <td align="center">
                         {% if todo.completed == True %}
-                            <i class="far fa-check-circle"></i>
-                            <a href="{% url 'incomplete' todo.id %}">Mark Incomplete</a>
+                            <a href="{% url 'incomplete' todo.id %}">
+                                <span>
+                                    <i class="far fa-check-circle"></i>
+                                </span>
+                            </a>
                         {% else %}
-                            <i class="far fa-circle"></i>
-                            <a href="{% url 'complete' todo.id %}">Mark Complete</a>
+                            <a href="{% url 'complete' todo.id %}">
+                                <span>
+                                    <i class="far fa-circle"></i>
+                                </span>
+                            </a>
                         {% endif %}
-                        <span>or</span>
-                        <a href="{% url 'edit' todo.id %}">Edit Task</a>
                     </td>
-                    <td>
-                        <a href="{% url 'delete' todo.id %}">Remove Task</a>
+                    <td align="center">
+                        <a href="{% url 'edit' todo.id %}">
+                            <span>
+                                <i class="fa-solid fa-file-pen"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="{% url 'delete' todo.id %}">
+                            <span>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
