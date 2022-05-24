@@ -5,49 +5,49 @@ from django.contrib import messages
 
 
 def home(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = TodoForm(request.POST or None)
 
         if form.is_valid():
             form.save()
             todos = Todo.objects.all()
-            messages.success(request, ('Task has been added!'))
-            return render(request, 'todo_app/home.html', {'todos': todos})
+            messages.success(request, ("Task has been added!"))
+            return render(request, "todo_app/home.html", {"todos": todos})
     else:
         todos = Todo.objects.all()
-        return render(request, 'todo_app/home.html', {'todos': todos})
+        return render(request, "todo_app/home.html", {"todos": todos})
 
 
 def delete(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.delete()
-    messages.success(request, ('Task has been Deleted!'))
-    return redirect('home')
+    messages.success(request, ("Task has been Deleted!"))
+    return redirect("home")
 
 
 def task_complete(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.completed = True
     todo.save()
-    return redirect('home')
+    return redirect("home")
 
 
 def task_incomplete(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.completed = False
     todo.save()
-    return redirect('home')
+    return redirect("home")
 
 
 def edit(request, todo_id):
-    if request.method == 'POST':
+    if request.method == "POST":
         todo = Todo.objects.get(id=todo_id)
         form = TodoForm(request.POST or None, instance=todo)
 
         if form.is_valid():
             form.save()
-            messages.success(request, ('Task has been edited!'))
-            return redirect('home')
+            messages.success(request, ("Task has been edited!"))
+            return redirect("home")
     else:
         todo = Todo.objects.get(id=todo_id)
-        return render(request, 'todo_app/edit.html', {'todo': todo})
+        return render(request, "todo_app/edit.html", {"todo": todo})
