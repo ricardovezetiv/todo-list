@@ -74,7 +74,7 @@ $ poetry config virtualenvs.in-project true
 ```
 
 - Abrir o projeto Git com o PyCharm
-- Configurar o Poetru como **'Python Interpreter'** no PyCharm
+- Configurar o Poetry como **'Python Interpreter'** no PyCharm
 
 ```bash
 $ poetry shell
@@ -104,7 +104,7 @@ $ flake8 .
 $ black -l 79 --check --diff .
 ```
 
-> **Observação:** Noo término do projeto, o nome da aplicação foi alterado para `todo` e o código foi refatorado. 
+> **Observação:** No término do projeto, o nome da aplicação foi alterado para `todo` e o código foi refatorado. 
 
 > Projeto inspirado no passo-a-passo do link abaixo
 https://vegibit.com/todo-app-with-django-and-bulma/
