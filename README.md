@@ -1,8 +1,19 @@
 # todo-list
-Gerencie tarefas de forma fácil e descomplicada! Crie, edite e exclua tarefas,
+Gerencie tarefas de forma fácil e descomplicada! Crie, edite e exclua tarefas, 
 com a opção também de marcar uma tarefa como concluida.
 
-# Para instalar
+## Detalhes
+
+### Dependêncies
+- python 3.10
+- Django 4.0.4
+- fontawesomefree 6.1.1
+
+### Dependências de desenvolvimento
+- flake8 4.0.1
+- black 22.3.0
+
+## Para instalar
 
 ### Obtendo repositório
 
